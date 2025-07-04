@@ -1,0 +1,38 @@
+[
+    {
+       "name": "Veg Pizza",
+       "varients": ["small", "medium", "large"],
+       "prices" : {
+        "small" : 100,
+        "medium" : 200,
+        "large" : 300
+       },
+       "quantity": [1,2,3],
+       "image" : "https://breadboozebacon.com/wp-content/uploads/2023/05/BBQ-Chicken-Pizza-SQUARE.jpg"
+
+    },
+    {
+        "name": "Chicken Pizza",
+        "varients": ["small", "medium", "large"],
+        "prices" : {
+         "small" : 100,
+         "medium" : 200,
+         "large" : 300
+        },
+        "quantity": [1,2,3],
+        "image" : "https://www.dominos.co.in/files/items/Farmhouse.jpg"
+ 
+     },
+     {
+        "name": "Cheese Pizza",
+        "varients": ["small", "medium", "large"],
+        "prices" : {
+         "small" : 100,
+         "medium" : 200,
+         "large" : 300
+        },
+        "quantity": [1,2,3],
+        "image" : "https://breadboozebacon.com/wp-content/uploads/2023/05/BBQ-Chicken-Pizza-SQUARE.jpg"
+ 
+     }
+]
