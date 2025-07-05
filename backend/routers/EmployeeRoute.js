@@ -2,6 +2,8 @@ import express from 'express'
 import con from "../utils/db.js";
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcrypt'
+import { configDotenv } from 'dotenv';
+configDotenv()
 
 const router = express.Router()
 
@@ -17,7 +19,7 @@ router.post("/employee_login", (req, res) => {
                 const email = result[0].email;
                 const token = jwt.sign(
                     { role: "employee", email: email, id: result[0].id },
-                    "jwt_secret_key",
+                    process.env.TOKEN,
                     { expiresIn: "1d" }
                 );
                 res.cookie('token', token)

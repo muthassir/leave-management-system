@@ -86,7 +86,7 @@ const Home = () => {
               <Divider sx={{ my: 1 }} />
               <Box display="flex" justifyContent="space-between">
                 <Typography>Total:</Typography>
-                <Typography>${salaryTotal}</Typography>
+                <Typography>₹{salaryTotal}</Typography>
               </Box>
             </CardContent>
           </Card>

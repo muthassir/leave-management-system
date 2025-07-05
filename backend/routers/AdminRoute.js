@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 import bcrypt from 'bcrypt'
 import multer from "multer";
 import path from "path";
+import { configDotenv } from "dotenv";
+configDotenv()
 
 const router = express.Router();
 
@@ -16,7 +18,7 @@ router.post("/adminlogin", (req, res) => {
       const email = result[0].email;
       const token = jwt.sign(
         { role: "admin", email: email, id: result[0].id },
-        "jwt_secret_key",
+        process.env.TOKEN,
         { expiresIn: "1d" }
       );
       res.cookie('token', token)
@@ -122,12 +124,20 @@ router.put('/edit_employee/:id', (req, res) => {
 // delete employee
 router.delete('/delete_employee/:id', (req, res) => {
     const id = req.params.id;
-    const sql = "delete from employee where id = ?"
-    con.query(sql,[id], (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"+err})
-        return res.json({Status: true, Result: result})
-    })
-})
+  
+    const deleteLeavesSql = "DELETE FROM leave_requests WHERE employee_id = ?";
+    const deleteEmployeeSql = "DELETE FROM employee WHERE id = ?";
+  
+    con.query(deleteLeavesSql, [id], (err) => {
+      if (err) return res.json({ Status: false, Error: "Error deleting leaves: " + err });
+  
+      con.query(deleteEmployeeSql, [id], (err, result) => {
+        if (err) return res.json({ Status: false, Error: "Error deleting employee: " + err });
+        return res.json({ Status: true, Result: result });
+      });
+    });
+  });
+  
 
 // admin total count
 router.get('/admin_count', (req, res) => {

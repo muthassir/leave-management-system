@@ -86,7 +86,7 @@ const Employee = () => {
                 </TableCell>
                 <TableCell>{e.email}</TableCell>
                 <TableCell>{e.address}</TableCell>
-                <TableCell>${e.salary}</TableCell>
+                <TableCell>₹{e.salary}</TableCell>
                 <TableCell>
                   <Stack direction="row" spacing={1}>
                     <Button
